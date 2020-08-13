@@ -6,9 +6,11 @@ const bcrypt = require ("bcrypt");
 
 const jwtGenerator = require("../utilities/jwtGenerator");
 
+const validinfo = require("../middleware/validinfo");
+
 //register route
 
-router.post("/register", async (req, res) => {
+router.post("/register", validinfo, async (req, res) => {
     try {
 
         //1. destructure the req.body(name, email, password)
@@ -52,7 +54,7 @@ router.post("/register", async (req, res) => {
 
 //login route
 
-router.post("/login", async (req,res) => {
+router.post("/login", vlidinfo, async (req,res) => {
     try {
 
     //1. destructure req.body
@@ -81,7 +83,7 @@ router.post("/login", async (req,res) => {
 
     const token = jwtGenerator(user.rows[0].user_id);
 
-    res.json({token});
+    res.json({ token });
 
         
     } catch (err) {
