@@ -17,4 +17,3 @@ router.post("/", authorize, async (req, res) => {
 });
 
 module.exports = router;
-© 2020 GitHub, Inc.
